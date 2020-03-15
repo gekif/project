@@ -43,6 +43,18 @@ $config = [
             ],
         ],
         'db' => $db,
+
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'fileMap' => [
+                        'app' => 'app.php'
+                    ],
+                ],
+            ],
+        ],
+
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -51,7 +63,15 @@ $config = [
             ],
         ],
         */
+
+        'urlManager' => [
+            'class' => 'codemix\localeurls\UrlManager',
+            'languages' => ['en', 'de', 'ru'],
+        ],
+
     ],
+
+
     'params' => $params,
 ];
 
