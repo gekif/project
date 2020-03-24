@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "currency".
  *
- * @property int $id
+ * @property string $id
  * @property string $code
  * @property string $sign_format
  *
@@ -16,7 +16,7 @@ use Yii;
 class Currency extends \yii\db\ActiveRecord
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -24,7 +24,7 @@ class Currency extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -37,20 +37,18 @@ class Currency extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'code' => 'Code',
-            'sign_format' => 'Sign Format',
+            'id' => Yii::t('app', 'ID'),
+            'code' => Yii::t('app', 'Code'),
+            'sign_format' => Yii::t('app', 'Sign Format'),
         ];
     }
 
     /**
-     * Gets query for [[Trips]].
-     *
      * @return \yii\db\ActiveQuery
      */
     public function getTrips()

@@ -2,11 +2,8 @@
 
 use yii\db\Migration;
 
-/**
- * Class m200315_074203_create_table_user
- */
-class m200315_074203_create_table_user extends Migration
-{
+class m170430_171335_create_table_user extends Migration {
+
     public function up() {
         $this->createTable('user', [
             'id' => $this->primaryKey()->unsigned(),
@@ -25,4 +22,15 @@ class m200315_074203_create_table_user extends Migration
     public function down() {
         $this->dropTable('user');
     }
+
+    /*
+      // Use safeUp/safeDown to run migration code within a transaction
+      public function safeUp()
+      {
+      }
+
+      public function safeDown()
+      {
+      }
+     */
 }

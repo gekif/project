@@ -2,11 +2,8 @@
 
 use yii\db\Migration;
 
-/**
- * Class m200315_074225_create_table_message
- */
-class m200315_074225_create_table_message extends Migration
-{
+class m170430_173219_create_table_message extends Migration {
+
     public function up() {
         $this->createTable('message', [
             'id' => $this->primaryKey()->unsigned(),
@@ -16,13 +13,13 @@ class m200315_074225_create_table_message extends Migration
             'text' => $this->text()->notNull(),
             'created' => $this->timestamp()->notNull()->defaultExpression('CURRENT_TIMESTAMP')
         ]);
-
+        
         $this->createIndex('idx_message_from_user_id_user', 'message', 'from_user_id');
         $this->addForeignKey('fk_message_from_user_id_user', 'message', 'from_user_id', 'user', 'id', 'restrict', 'cascade');
-
+        
         $this->createIndex('idx_message_to_user_id_user', 'message', 'to_user_id');
         $this->addForeignKey('fk_message_to_user_id_user', 'message', 'to_user_id', 'user', 'id', 'restrict', 'cascade');
-
+        
         $this->createIndex('idx_message_trip_id_trip', 'message', 'trip_id');
         $this->addForeignKey('fk_message_trip_id_trip', 'message', 'trip_id', 'trip', 'id', 'restrict', 'cascade');
     }
@@ -36,7 +33,18 @@ class m200315_074225_create_table_message extends Migration
 
         $this->dropForeignKey('fk_message_trip_id_trip', 'message');
         $this->dropIndex('idx_message_trip_id_trip', 'message');
-
+        
         $this->dropTable('message');
     }
+
+    /*
+      // Use safeUp/safeDown to run migration code within a transaction
+      public function safeUp()
+      {
+      }
+
+      public function safeDown()
+      {
+      }
+     */
 }

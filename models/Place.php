@@ -7,21 +7,21 @@ use Yii;
 /**
  * This is the model class for table "place".
  *
- * @property int $id
+ * @property string $id
  * @property string $place_id
  * @property string $lat
  * @property string $lng
  * @property string $country_code
- * @property int|null $is_country
+ * @property integer $is_country
  *
  * @property PlaceLang[] $placeLangs
- * @property Trip[] $trips
- * @property Trip[] $trips0
+ * @property Trip[] $fromTrips
+ * @property Trip[] $toTrips
  */
 class Place extends \yii\db\ActiveRecord
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -29,12 +29,12 @@ class Place extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['place_id', 'lat', 'lng', 'country_code'], 'required'],
+            [['place_id', 'lat', 'lng', 'country_code', 'is_country'], 'required'],
             [['is_country'], 'integer'],
             [['place_id', 'lat', 'lng'], 'string', 'max' => 45],
             [['country_code'], 'string', 'max' => 2],
@@ -42,23 +42,21 @@ class Place extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'place_id' => 'Place ID',
-            'lat' => 'Lat',
-            'lng' => 'Lng',
-            'country_code' => 'Country Code',
-            'is_country' => 'Is Country',
+            'id' => Yii::t('app', 'ID'),
+            'place_id' => Yii::t('app', 'Place ID'),
+            'lat' => Yii::t('app', 'Lat'),
+            'lng' => Yii::t('app', 'Lng'),
+            'country_code' => Yii::t('app', 'Country Code'),
+            'is_country' => Yii::t('app', 'Is Country'),
         ];
     }
 
     /**
-     * Gets query for [[PlaceLangs]].
-     *
      * @return \yii\db\ActiveQuery
      */
     public function getPlaceLangs()
@@ -67,21 +65,17 @@ class Place extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Trips]].
-     *
      * @return \yii\db\ActiveQuery
      */
-    public function getTrips()
+    public function getFromTrips()
     {
         return $this->hasMany(Trip::className(), ['from' => 'id']);
     }
 
     /**
-     * Gets query for [[Trips0]].
-     *
      * @return \yii\db\ActiveQuery
      */
-    public function getTrips0()
+    public function getToTrips()
     {
         return $this->hasMany(Trip::className(), ['to' => 'id']);
     }

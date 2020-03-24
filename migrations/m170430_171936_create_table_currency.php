@@ -2,11 +2,8 @@
 
 use yii\db\Migration;
 
-/**
- * Class m200315_074210_create_table_currency
- */
-class m200315_074210_create_table_currency extends Migration
-{
+class m170430_171936_create_table_currency extends Migration {
+
     public function safeUp() {
         $this->createTable('currency', [
             'id' => $this->primaryKey()->unsigned(),
@@ -42,4 +39,5 @@ class m200315_074210_create_table_currency extends Migration
 
         $this->dropTable('currency');
     }
+
 }

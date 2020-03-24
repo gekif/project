@@ -7,10 +7,10 @@ use Yii;
 /**
  * This is the model class for table "message".
  *
- * @property int $id
- * @property int $from_user_id
- * @property int $to_user_id
- * @property int $trip_id
+ * @property string $id
+ * @property string $from_user_id
+ * @property string $to_user_id
+ * @property string $trip_id
  * @property string $text
  * @property string $created
  *
@@ -21,7 +21,7 @@ use Yii;
 class Message extends \yii\db\ActiveRecord
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -29,7 +29,7 @@ class Message extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -45,23 +45,21 @@ class Message extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'from_user_id' => 'From User ID',
-            'to_user_id' => 'To User ID',
-            'trip_id' => 'Trip ID',
-            'text' => 'Text',
-            'created' => 'Created',
+            'id' => Yii::t('app', 'ID'),
+            'from_user_id' => Yii::t('app', 'From User ID'),
+            'to_user_id' => Yii::t('app', 'To User ID'),
+            'trip_id' => Yii::t('app', 'Trip ID'),
+            'text' => Yii::t('app', 'Text'),
+            'created' => Yii::t('app', 'Created'),
         ];
     }
 
     /**
-     * Gets query for [[FromUser]].
-     *
      * @return \yii\db\ActiveQuery
      */
     public function getFromUser()
@@ -70,8 +68,6 @@ class Message extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[ToUser]].
-     *
      * @return \yii\db\ActiveQuery
      */
     public function getToUser()
@@ -80,8 +76,6 @@ class Message extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Trip]].
-     *
      * @return \yii\db\ActiveQuery
      */
     public function getTrip()

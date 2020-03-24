@@ -2,11 +2,8 @@
 
 use yii\db\Migration;
 
-/**
- * Class m200315_074232_create_table_phone_number
- */
-class m200315_074232_create_table_phone_number extends Migration
-{
+class m170430_173752_create_table_phone_number extends Migration {
+
     public function up() {
         $this->createTable('phone_number', [
             'id' => $this->primaryKey()->unsigned(),
@@ -35,4 +32,15 @@ class m200315_074232_create_table_phone_number extends Migration
 
         $this->dropTable('phone_number');
     }
+
+    /*
+      // Use safeUp/safeDown to run migration code within a transaction
+      public function safeUp()
+      {
+      }
+
+      public function safeDown()
+      {
+      }
+     */
 }

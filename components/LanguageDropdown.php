@@ -20,9 +20,9 @@ class LanguageDropdown extends Dropdown {
         foreach (Yii::$app->urlManager->languages as $language) {
             $isWildcard = substr($language, -2) === '-*';
             if (
-                $language === $appLanguage ||
-                // Also check for wildcard language
-                $isWildcard && substr($appLanguage, 0, 2) === substr($language, 0, 2)
+                    $language === $appLanguage ||
+                    // Also check for wildcard language
+                    $isWildcard && substr($appLanguage, 0, 2) === substr($language, 0, 2)
             ) {
                 continue;   // Exclude the current language
             }

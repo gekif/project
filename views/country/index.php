@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Countries';
+$this->title = Yii::t('app', 'Countries');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="country-index">
@@ -14,10 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Country', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Country'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
@@ -28,11 +26,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'phonecode',
             'lat',
-            //'lng',
+            'lng',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
-
 </div>

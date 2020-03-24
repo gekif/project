@@ -2,11 +2,8 @@
 
 use yii\db\Migration;
 
-/**
- * Class m200315_074217_create_table_trip
- */
-class m200315_074217_create_table_trip extends Migration
-{
+class m170430_172359_create_table_trip extends Migration {
+
     public function up() {
         $this->createTable('trip', [
             'id' => $this->primaryKey()->unsigned(),
@@ -22,16 +19,16 @@ class m200315_074217_create_table_trip extends Migration
             'created' => $this->timestamp()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
             'updated' => $this->timestamp()->notNull()
         ]);
-
+        
         $this->createIndex('idx_trip_user_id_user', 'trip', 'user_id');
         $this->addForeignKey('fk_trip_user_id_user', 'trip', 'user_id', 'user', 'id', 'restrict', 'cascade');
-
+        
         $this->createIndex('idx_trip_from_place', 'trip', 'from');
         $this->addForeignKey('fk_trip_from_place', 'trip', 'from', 'place', 'id', 'restrict', 'cascade');
-
+        
         $this->createIndex('idx_trip_to_place', 'trip', 'to');
         $this->addForeignKey('fk_trip_to_place', 'trip', 'to', 'place', 'id', 'restrict', 'cascade');
-
+        
         $this->createIndex('idx_trip_currency_id_currency', 'trip', 'currency_id');
         $this->addForeignKey('fk_trip_currency_id_currency', 'trip', 'currency_id', 'currency', 'id', 'restrict', 'cascade');
     }
@@ -48,7 +45,18 @@ class m200315_074217_create_table_trip extends Migration
 
         $this->dropForeignKey('fk_trip_currency_id_currency', 'trip');
         $this->dropIndex('idx_trip_currency_id_currency', 'trip');
-
+        
         $this->dropTable('trip');
     }
+
+    /*
+      // Use safeUp/safeDown to run migration code within a transaction
+      public function safeUp()
+      {
+      }
+
+      public function safeDown()
+      {
+      }
+     */
 }
